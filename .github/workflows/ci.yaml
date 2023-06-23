@@ -45,7 +45,7 @@ jobs:
           create-release: true
           validate-go-module: go.mod
           release-refs: main
-          v0: true
+#          v0: true
           pre-release-hook: |
             script/bindown -q install goreleaser
             git tag "$RELEASE_TAG"
