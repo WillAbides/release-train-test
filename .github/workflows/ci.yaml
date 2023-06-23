@@ -38,7 +38,7 @@ jobs:
 
       - name: release-train
         id: release-train
-        uses: WillAbides/release-train@v3.0.0-alpha.23
+        uses: WillAbides/release-train@v3.0.0-alpha.24
         with:
           create-release: true
           validate-go-module: go.mod
