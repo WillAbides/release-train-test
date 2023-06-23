@@ -1,0 +1,10 @@
+#!/bin/sh
+#/ script/release-train-test builds and runs the project with the given arguments.
+
+set -e
+
+CDPATH="" cd -- "$(dirname -- "$0")/.."
+
+go build -o bin/release-train-test ./cmd/release-train-test
+
+exec bin/release-train-test "$@"

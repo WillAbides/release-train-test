@@ -1,17 +1,11 @@
-# Contributing to goproject-tmpl
+# Contributing to release-train-test
 
 ## Scripts
 
-goproject-tmpl uses a number of scripts to automate common tasks. They are found in the
+release-train-test uses a number of scripts to automate common tasks. They are found in the
 `script` directory.
 
 <!--- start script descriptions --->
-
-### apply-template
-
-script/apply-template updates the files in this repo based on the repository name.
-This should only be run once, and it should be run by the apply-template GitHub Workflow.
-It will be deleted after running.
 
 ### bindown
 
@@ -30,21 +24,17 @@ script/fmt formats go code and shell scripts.
 script/generate runs all generators for this repo.
 `script/generate --check` checks that the generated files are up to date.
 
-### goproject-tmpl
-
-script/goproject-tmpl builds and runs the project with the given arguments.
-
 ### lint
 
 script/lint runs linters on the project.
 
-### new-from-template
-
-script/new-from-template is for ad-hoc testing of this template.
-
 ### release
 
 script/release creates a new release. It is run by GitHub Actions on push to main.
+
+### release-train-test
+
+script/release-train-test builds and runs the project with the given arguments.
 
 ### test
 
