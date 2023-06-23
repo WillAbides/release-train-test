@@ -9,6 +9,8 @@ on:
       - synchronize
       - opened
       - reopened
+      - labeled
+      - unlabeled
 jobs:
   cibuild:
     name: cibuild
@@ -34,10 +36,16 @@ jobs:
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           script/cibuild
 
-      # release on pushes to main
-      - if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: script/release
-
-
+      - name: release-train
+        id: release-train
+        uses: WillAbides/release-train@v3.0.0-alpha.25
+        with:
+          create-release: true
+          validate-go-module: go.mod
+          release-refs: main
+          v0: true
+          pre-release-hook: |
+            script/bindown -q install goreleaser
+            git tag "$RELEASE_TAG"
+            bin/goreleaser release --clean --skip-publish
+            cp dist/checksums.txt dist/*.tar.gz "$ASSETS_DIR"
