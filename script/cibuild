@@ -10,4 +10,3 @@ script/bindown -q install goreleaser
 script/test
 script/lint
 script/generate --check
-bin/goreleaser build --snapshot --clean
