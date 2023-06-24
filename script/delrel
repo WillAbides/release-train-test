@@ -6,5 +6,7 @@ CDPATH="" cd -- "$(dirname -- "$0")/.."
 
 script/bindown -q install gh
 
-bin/gh release delete "$1" -y
-git push --delete origin "$1"
+for rel in "$@"; do
+  bin/gh release delete "$rel" -y || true
+  git push --delete origin "$rel" || true
+done
