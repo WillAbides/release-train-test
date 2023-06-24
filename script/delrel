@@ -10,4 +10,5 @@ script/bindown -q install gh
 for rel in "$@"; do
   bin/gh release delete "$rel" -y || true
   git push --delete origin "$rel" || true
+  git tag -d "$rel" || true
 done
