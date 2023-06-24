@@ -1,4 +1,5 @@
 #!/bin/sh
+#/ script/delrel deletes a releases from GitHub.
 
 set -e
 

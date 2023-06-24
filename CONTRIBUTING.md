@@ -15,6 +15,10 @@ script/bindown runs bindown with the given arguments
 
 script/cibuild is run by CI to test this project. It can also be run locally.
 
+### delrel
+
+script/delrel deletes a releases from GitHub.
+
 ### fmt
 
 script/fmt formats go code and shell scripts.
@@ -28,9 +32,9 @@ script/generate runs all generators for this repo.
 
 script/lint runs linters on the project.
 
-### release
+### release-train
 
-script/release creates a new release. It is run by GitHub Actions on push to main.
+script/release-train runs release-train at the same version as configured in the action.
 
 ### release-train-test
 
