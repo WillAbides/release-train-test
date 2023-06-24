@@ -30,7 +30,7 @@ jobs:
           create-release: true
           validate-go-module: go.mod
           release-refs: main
-          initial-release-tag: v0.0.0-0
+          initial-release-tag: ""
           v0: true
           pre-release-hook: |
             script/bindown -q install goreleaser
