@@ -33,4 +33,3 @@ jobs:
           pre-release-hook: |
             script/bindown -q install goreleaser
             echo foo > "$ASSETS_DIR/foo.txt"
-            cp dist/checksums.txt dist/*.tar.gz "$ASSETS_DIR"

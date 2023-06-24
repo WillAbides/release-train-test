@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -e
+
+CDPATH="" cd -- "$(dirname -- "$0")/.."
+
+script/bindown -q install gh
+
+bin/gh release delete "$1" -y
+git push --delete origin "$1"
