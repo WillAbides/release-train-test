@@ -32,7 +32,7 @@ dependencies:
   release-train:
     template: release-train
     vars:
-      version: 3.0.0-alpha.25
+      version: 3.0.0-alpha.28
   semver-next:
     template: origin#semver-next
     vars:
@@ -443,10 +443,10 @@ url_checksums:
   https://github.com/WillAbides/handcrafted/releases/download/v0.0.0/handcrafted_0.0.0_darwin_arm64.tar.gz: c03133084f87e064f9801d4b2a9739be755fcee5875382f4da0fc10cd8306dfb
   https://github.com/WillAbides/handcrafted/releases/download/v0.0.0/handcrafted_0.0.0_linux_amd64.tar.gz: 1a7885a9854d2455dce1be3bc19f2d61a61ebdc99e2a98e4969ab1965c2a64ad
   https://github.com/WillAbides/handcrafted/releases/download/v0.0.0/handcrafted_0.0.0_windows_amd64.tar.gz: 5ce8cddc9bdbd19adde3104397d698ecca7eb8ad2ac540cc709a15821f9b2609
-  https://github.com/WillAbides/release-train/releases/download/v3.0.0-alpha.25/release-train_3.0.0-alpha.25_darwin_amd64.tar.gz: bffc85098e610530bb87e1a0e5332481c7be26563cb273696bd5bd26f8418421
-  https://github.com/WillAbides/release-train/releases/download/v3.0.0-alpha.25/release-train_3.0.0-alpha.25_darwin_arm64.tar.gz: 8102b624f43cfdf33c8b68a7ed1663c9a07df76196f0367fd57784d2faa25823
-  https://github.com/WillAbides/release-train/releases/download/v3.0.0-alpha.25/release-train_3.0.0-alpha.25_linux_amd64.tar.gz: 823b2d66a599934b982a042f1bada6c831ad8088b6f034fa3c74a423240b377a
-  https://github.com/WillAbides/release-train/releases/download/v3.0.0-alpha.25/release-train_3.0.0-alpha.25_windows_amd64.tar.gz: 704333db6b8c7e51e69c62b11c6c472621ee0f1c1fc9a9739a20349d4be1a39f
+  https://github.com/WillAbides/release-train/releases/download/v3.0.0-alpha.28/release-train_3.0.0-alpha.28_darwin_amd64.tar.gz: 89c71e6776ae78e55e270b27c551f850bdfb80f558b9648228bed3459bb84d7d
+  https://github.com/WillAbides/release-train/releases/download/v3.0.0-alpha.28/release-train_3.0.0-alpha.28_darwin_arm64.tar.gz: de792164b902044f9de300502f0e0ab73644e54ccd965e955e4f4b6ffe4289a7
+  https://github.com/WillAbides/release-train/releases/download/v3.0.0-alpha.28/release-train_3.0.0-alpha.28_linux_amd64.tar.gz: 54dd8244f9d15b6cb775e21ee42ec2078d7286e3da67bd1a2bc065a9699dfbfe
+  https://github.com/WillAbides/release-train/releases/download/v3.0.0-alpha.28/release-train_3.0.0-alpha.28_windows_amd64.tar.gz: 21f565075d5c2eacf2d3ee94f5e574c61603cc5820db7b564dbc531635aa0127
   https://github.com/WillAbides/semver-next/releases/download/v2.0.0/semver-next_2.0.0_darwin_amd64.tar.gz: 2bb0e3a6fda58689c7c983c33f131b44298484ea42c95455f711b16e3a93d033
   https://github.com/WillAbides/semver-next/releases/download/v2.0.0/semver-next_2.0.0_darwin_arm64.tar.gz: d86b2a7e0cb21cd56b9168913994b4470be2c1a0d724d91c85d91aa3e8c63755
   https://github.com/WillAbides/semver-next/releases/download/v2.0.0/semver-next_2.0.0_linux_amd64.tar.gz: 336beb1eb6ce340a6dfbb61b7f3ffd8af821414112479a38f9b10db03dc7a6ea

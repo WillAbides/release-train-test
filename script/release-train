@@ -23,12 +23,9 @@ BINDOWN_VERSION="$(
 WORKFLOW_VERSION="${WORKFLOW_TAG#v}"
 
 if [ "$BINDOWN_VERSION" != "$WORKFLOW_VERSION" ]; then
-  script/bindown dependency update-vars release-train \
-    --set version="$WORKFLOW_VERSION" \
-    --skipchecksums
-
-  trap 'script/bindown dependency update-vars release-train --set version="$BINDOWN_VERSION" --skipchecksums' EXIT
+  script/bindown dependency update-vars release-train --set version="$WORKFLOW_VERSION"
+  script/bindown checksums prune
 fi
 
-script/bindown -q install release-train --allow-missing-checksum
+script/bindown -q install release-train
 bin/release-train "$@"

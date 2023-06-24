@@ -25,7 +25,7 @@ jobs:
         id: release-train
         env:
           LOG_DEBUG_AS_NOTICE: 1
-        uses: WillAbides/release-train@v3.0.0-alpha.26
+        uses: WillAbides/release-train@v3.0.0-alpha.28
         with:
           create-release: true
           validate-go-module: go.mod
