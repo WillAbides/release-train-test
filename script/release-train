@@ -1,0 +1,34 @@
+#!/bin/sh
+#/ script/release-train runs release-train at the same version as configured in the action.
+
+set -e
+
+CDPATH="" cd -- "$(dirname -- "$0")/.."
+
+[ -f bin/yq ] || script/bindown -q install yq
+
+WORKFLOW_TAG="$(
+  bin/yq '.jobs.cibuild.steps |
+  map(select(.id == "release-train")) |
+  .[0].uses' .github/workflows/ci.yaml |
+    cut -d '@' -f 2
+)"
+
+BINDOWN_VERSION="$(
+  script/bindown dependency show-config release-train |
+  bin/yq .vars.version
+)"
+
+# remove leading v from WORKFLOW_TAG
+WORKFLOW_VERSION="${WORKFLOW_TAG#v}"
+
+if [ "$BINDOWN_VERSION" != "$WORKFLOW_VERSION" ]; then
+  script/bindown dependency update-vars release-train \
+    --set version="$WORKFLOW_VERSION" \
+    --skipchecksums
+
+  trap 'script/bindown dependency update-vars release-train --set version="$BINDOWN_VERSION" --skipchecksums' EXIT
+fi
+
+script/bindown -q install release-train --allow-missing-checksum
+bin/release-train "$@"
