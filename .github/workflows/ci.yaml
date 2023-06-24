@@ -23,6 +23,8 @@ jobs:
           fetch-depth: 0
       - name: release-train
         id: release-train
+        env:
+          LOG_DEBUG_AS_NOTICE: 1
         uses: WillAbides/release-train@v3.0.0-alpha.25
         with:
           create-release: true
@@ -33,3 +35,9 @@ jobs:
           pre-release-hook: |
             script/bindown -q install goreleaser
             echo foo > "$ASSETS_DIR/foo.txt"
+      - name: echo output
+        if: always()
+        run: |
+          cat <<EOF
+          ${{ toJSON(steps.release-train.outputs) }}
+          EOF
