@@ -2,11 +2,23 @@ package main
 
 import (
 	"fmt"
+	"runtime/debug"
 
 	"github.com/alecthomas/kong"
 )
 
-var version = "unknown"
+var version = ""
+
+func getVersion() string {
+	if version != "" {
+		return version
+	}
+	info, ok := debug.ReadBuildInfo()
+	if ok {
+		return info.Main.Version
+	}
+	return "unknown"
+}
 
 const description = `` // add description here
 
@@ -15,7 +27,7 @@ type cmdRoot struct {
 }
 
 var kongVars = kong.Vars{
-	"version":     version,
+	"version":     getVersion(),
 	"VersionHelp": `Output the release-train-test version and exit.`,
 }
 
