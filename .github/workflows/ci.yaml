@@ -25,14 +25,13 @@ jobs:
         id: release-train
         env:
           LOG_DEBUG_AS_NOTICE: 1
-        uses: WillAbides/release-train@v3.0.0-alpha.33
+        uses: WillAbides/release-train@v3.5.0
         with:
           create-release: true
-          validate-go-module: go.mod
           release-refs: main
           initial-release-tag: ""
           v0: true
-          pre-release-hook: |
+          pre-tag-hook: |
             script/bindown -q install goreleaser
             echo foo > "$ASSETS_DIR/foo.txt"
       - name: echo output
