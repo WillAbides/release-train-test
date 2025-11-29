@@ -1,0 +1,21 @@
+#!/bin/bash
+#/ script/update-flake-hash updates the flake inputs to their latest versions.
+#/
+#/ Usage: ./script/update-flake-hash
+
+set -e
+
+FILE="flake.nix"
+
+DUMMY_HASH="sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+nix run github:snowfallorg/nix-editor -- "$FILE" outputs.packages.default.vendorHash -v "$(printf '"%s"' "$DUMMY_HASH")" -f -i
+
+# Parse the correct hash from the error output
+HASH=$(nix build 2>&1 | sed -n 's/.*got:\s*//p' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+
+if [ -z "$HASH" ]; then
+  echo "Failed to compute new hash" >&2
+  exit 1
+fi
+
+nix run github:snowfallorg/nix-editor -- "$FILE" outputs.packages.default.vendorHash -v "$(printf '"%s"' "$HASH")" -f -i
