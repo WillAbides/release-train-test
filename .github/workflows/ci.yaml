@@ -25,7 +25,7 @@ jobs:
         id: release-train
         env:
           LOG_DEBUG_AS_NOTICE: 1
-        uses: WillAbides/release-train@v3.5.0
+        uses: WillAbides/release-train@v3.8.5
         with:
           create-release: true
           release-refs: main
@@ -34,6 +34,9 @@ jobs:
           pre-tag-hook: |
             script/bindown -q install goreleaser
             echo foo > "$ASSETS_DIR/foo.txt"
+            git tag "$RELEASE_TAG"
+            bin/goreleaser release --clean --skip-publish
+            cp dist/checksums.txt dist/release-train-test_*.tar.gz "$ASSETS_DIR"
       - name: echo output
         if: always()
         run: |
