@@ -32,6 +32,7 @@ fi
 
 go generate ./...
 go mod tidy
+script/update-flake-hash
 
 if [ -f script/update-docs ]; then
   ./script/update-docs

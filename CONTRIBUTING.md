@@ -50,6 +50,12 @@ script/generate-readme updates documentation.
 - For projects with binaries, it updates the usage output in README.md.
 - Adds script descriptions to CONTRIBUTING.md.
 
+### update-flake-hash
+
+script/update-flake-hash updates the vendorHash in flake.nix.
+
+Usage: ./script/update-flake-hash
+
 <!--- end script descriptions --->
 
 ## Releasing

@@ -1,0 +1,25 @@
+#!/bin/bash
+#/ script/update-flake-hash updates the vendorHash in flake.nix.
+#/
+#/ Usage: ./script/update-flake-hash
+
+set -e
+
+DUMMY_HASH="sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+FILE="flake.nix"
+
+sed -i '' \
+  -e "s/vendorHash = \".*\";/vendorHash = \"$DUMMY_HASH\";/" \
+  "$FILE"
+
+HASH=$(nix build 2>&1 | grep -o 'got:.*' | awk '{print $2}')
+
+if [ -z "$HASH" ]; then
+  echo "Failed to compute new hash" >&2
+  exit 1
+fi
+
+# Replace all instances of DUMMY_HASH with the real hash
+sed -i '' \
+  -e "s|$DUMMY_HASH|$HASH|g" \
+  "$FILE"
