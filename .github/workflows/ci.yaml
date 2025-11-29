@@ -33,6 +33,8 @@ jobs:
           key: go-${{ runner.os }}-${{ hashFiles('go.*', '*.go', '.github/workflows/ci.yaml', 'script/*', 'action/*' ,'.bindown.yaml', '.goreleaser.yaml') }}
           restore-keys: go-${{ runner.os }}-
       - run: |
+          git config --local user.name '${{ github.actor }}'
+          git config --local user.email '${{ github.actor }}@users.noreply.github.com'
           script/cibuild
       - name: release-train
         id: release-train
