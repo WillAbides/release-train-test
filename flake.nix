@@ -7,10 +7,10 @@
   };
 
   outputs =
-    {
-      self,
-      nixpkgs,
-      flake-utils,
+    { self
+    , nixpkgs
+    , flake-utils
+    ,
     }:
     flake-utils.lib.eachDefaultSystem (
       system:
@@ -22,7 +22,7 @@
           pname = "release-train-test";
           version = "devel";
           src = ./.;
-          vendorHash = "sha256-pJlJvpFH4ltsFINYEcdMzh5waripYjjwUkdNqTyYr2Q=";
+          vendorHash = "sha256-uP/+QtXJiQGWL3mJKXGxAbz0C0FIJ90GM1b73odA2rY=";
           ldflags = [ "-X main.version=${self.packages.${system}.default.version}" ];
           subPackages = [ "cmd/release-train-test" ];
         };

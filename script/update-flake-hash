@@ -1,25 +1,21 @@
 #!/bin/bash
-#/ script/update-flake-hash updates the vendorHash in flake.nix.
+#/ script/update-flake-hash updates the flake inputs to their latest versions.
 #/
 #/ Usage: ./script/update-flake-hash
 
 set -e
 
-DUMMY_HASH="sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
 FILE="flake.nix"
 
-sed -i '' \
-  -e "s/vendorHash = \".*\";/vendorHash = \"$DUMMY_HASH\";/" \
-  "$FILE"
+DUMMY_HASH="sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+nix run github:snowfallorg/nix-editor -- "$FILE" outputs.packages.default.vendorHash -v "$(printf '"%s"' "$DUMMY_HASH")" -f -i
 
-HASH=$(nix build 2>&1 | grep -o 'got:.*' | awk '{print $2}')
+# Parse the correct hash from the error output
+HASH=$(nix build 2>&1 | sed -n 's/.*got:\s*//p' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
 
 if [ -z "$HASH" ]; then
   echo "Failed to compute new hash" >&2
   exit 1
 fi
 
-# Replace all instances of DUMMY_HASH with the real hash
-sed -i '' \
-  -e "s|$DUMMY_HASH|$HASH|g" \
-  "$FILE"
+nix run github:snowfallorg/nix-editor -- "$FILE" outputs.packages.default.vendorHash -v "$(printf '"%s"' "$HASH")" -f -i
