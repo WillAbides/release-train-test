@@ -32,6 +32,9 @@ jobs:
             ${{ steps.setup-go.outputs.GOMODCACHE }}
           key: go-${{ runner.os }}-${{ hashFiles('go.*', '*.go', '.github/workflows/ci.yaml', 'script/*', 'action/*' ,'.bindown.yaml', '.goreleaser.yaml') }}
           restore-keys: go-${{ runner.os }}-
+      - uses: cachix/install-nix-action@v31
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
       - run: |
           git config --local user.name '${{ github.actor }}'
           git config --local user.email '${{ github.actor }}@users.noreply.github.com'
