@@ -25,7 +25,7 @@ jobs:
         id: release-train
         env:
           LOG_DEBUG_AS_NOTICE: 1
-        uses: WillAbides/release-train@v3.5.0
+        uses: WillAbides/release-train@v3.8.5
         with:
           create-release: true
           release-refs: main
