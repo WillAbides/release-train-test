@@ -52,7 +52,7 @@ script/generate-readme updates documentation.
 
 ### update-flake-hash
 
-script/update-flake-hash updates the vendorHash in flake.nix.
+script/update-flake-hash updates the flake inputs to their latest versions.
 
 Usage: ./script/update-flake-hash
 
