@@ -1,0 +1,10 @@
+#!/bin/bash
+#/ script/nix-editor runs https://github.com/snowfallorg/nix-editor with the given arguments
+
+set -e
+
+REPO_DIR="$(CDPATH="" cd -- "$(dirname -- "$0")/.." && pwd)"
+
+NIX_EDITOR="$(cd "$REPO_DIR" && devbox run -q which nix-editor)"
+
+exec "$NIX_EDITOR" "$@"

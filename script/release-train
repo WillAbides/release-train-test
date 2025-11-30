@@ -16,7 +16,7 @@ WORKFLOW_TAG="$(
 
 BINDOWN_VERSION="$(
   script/bindown dependency show-config release-train |
-  bin/yq .vars.version
+    bin/yq .vars.version
 )"
 
 # remove leading v from WORKFLOW_TAG

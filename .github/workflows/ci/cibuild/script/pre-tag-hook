@@ -6,8 +6,7 @@ CDPATH="" cd -- "$(dirname -- "$0")/../../../../.."
 
 script/bindown -q install goreleaser
 echo foo > "$ASSETS_DIR/foo.txt"
-NIX_EDITOR="$(devbox run -q which nix-editor)"
-"$NIX_EDITOR" flake.nix outputs.packages.default.version -v "\"$RELEASE_TAG\"" -f -i
+script/nix-editor flake.nix outputs.packages.default.version -v "\"$RELEASE_TAG\"" -f -i
 git add flake.nix
 git commit -m "bump version to $RELEASE_TAG"
 git tag "$RELEASE_TAG"
