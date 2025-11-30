@@ -33,7 +33,7 @@ jobs:
           key: go-${{ runner.os }}-${{ hashFiles('go.*', '*.go', '.github/workflows/ci.yaml', 'script/*', 'action/*' ,'.bindown.yaml', '.goreleaser.yaml') }}
           restore-keys: go-${{ runner.os }}-
       - uses: jetify-com/devbox-install-action@v0.14.0
-        with:
+        with: {}
 #          enable-cache: 'true'
       - name: delete me
         run: script/nix-editor -h
