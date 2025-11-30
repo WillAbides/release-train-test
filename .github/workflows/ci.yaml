@@ -32,6 +32,9 @@ jobs:
             ${{ steps.setup-go.outputs.GOMODCACHE }}
           key: go-${{ runner.os }}-${{ hashFiles('go.*', '*.go', '.github/workflows/ci.yaml', 'script/*', 'action/*' ,'.bindown.yaml', '.goreleaser.yaml') }}
           restore-keys: go-${{ runner.os }}-
+      - uses: jetify-com/devbox-install-action@v0.14.0
+        with:
+          enable-cache: 'true'
       - name: delete me
         run: script/nix-editor -h
       - uses: tibdex/github-app-token@v1.8.0
@@ -39,9 +42,6 @@ jobs:
         with:
           app_id: ${{ secrets.RELEASER_APP_ID }}
           private_key: ${{ secrets.RELEASER_APP_KEY }}
-      - uses: jetify-com/devbox-install-action@v0.14.0
-        with:
-          enable-cache: 'true'
       - name: git config
         run: |
           git config --local user.name '${{ github.actor }}'
