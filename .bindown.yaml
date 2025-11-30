@@ -5,6 +5,10 @@ systems:
   - linux/amd64
   - windows/amd64
 dependencies:
+  devbox:
+    template: devbox
+    vars:
+      version: 0.16.0
   gh:
     template: origin#gh
     vars:
@@ -54,6 +58,21 @@ dependencies:
     vars:
       version: 4.33.3
 templates:
+  devbox:
+    homepage: https://www.jetify.com/devbox/
+    description: Instant, easy, and predictable development environments
+    url: https://github.com/jetify-com/devbox/releases/download/{{.version}}/devbox_{{.version}}_{{.os}}_{{.arch}}{{.urlSuffix}}
+    archive_path: devbox{{.archivePathSuffix}}
+    bin: devbox
+    vars:
+      archivePathSuffix: ""
+      urlSuffix: .tar.gz
+    systems:
+      - darwin/amd64
+      - darwin/arm64
+      - linux/amd64
+    required_vars:
+      - version
   origin#gh:
     homepage: https://github.com/cli/cli
     description: GitHub’s official command line tool
@@ -467,6 +486,9 @@ url_checksums:
   https://github.com/goreleaser/goreleaser/releases/download/v1.18.2/goreleaser_Darwin_x86_64.tar.gz: 95338eed333347152e23837b68a8c6ce0c62b9f5abb68bd5b4b08178766400b9
   https://github.com/goreleaser/goreleaser/releases/download/v1.18.2/goreleaser_Linux_x86_64.tar.gz: 811e0c63e347f78f3c8612a19ca8eeb564eb45f0265ce3f38aec39c8fdbcfa10
   https://github.com/goreleaser/goreleaser/releases/download/v1.18.2/goreleaser_Windows_x86_64.zip: 4b67f9a0159dc4f6a19fdea46eda506d58efe9e9d01aebc6ee39c9e9c14f9715
+  https://github.com/jetify-com/devbox/releases/download/0.16.0/devbox_0.16.0_darwin_amd64.tar.gz: 84049d509b44f8d3919bfbd1a472ad6e38f3f0ded1705eb7a1debc0c8d21918d
+  https://github.com/jetify-com/devbox/releases/download/0.16.0/devbox_0.16.0_darwin_arm64.tar.gz: 02dc863efb372330bc002df8c6687340e95e70bafdf6abd9a671e435a9c1b8fd
+  https://github.com/jetify-com/devbox/releases/download/0.16.0/devbox_0.16.0_linux_amd64.tar.gz: 40de3daf9fd8f0d1bde6e274c8eeee3d5f6063e901c6dbebb3dd11f7834e1d0d
   https://github.com/koalaman/shellcheck/releases/download/v0.9.0/shellcheck-v0.9.0.darwin.x86_64.tar.xz: 7d3730694707605d6e60cec4efcb79a0632d61babc035aa16cda1b897536acf5
   https://github.com/koalaman/shellcheck/releases/download/v0.9.0/shellcheck-v0.9.0.linux.x86_64.tar.xz: 700324c6dd0ebea0117591c6cc9d7350d9c7c5c287acbad7630fa17b1d4d9e2f
   https://github.com/koalaman/shellcheck/releases/download/v0.9.0/shellcheck-v0.9.0.zip: ae58191b1ea4ffd9e5b15da9134146e636440302ce3e2f46863e8d71c8be1bbb
