@@ -6,9 +6,9 @@
 set -e
 
 FILE="flake.nix"
-
 DUMMY_HASH="sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
-nix run github:snowfallorg/nix-editor -- "$FILE" outputs.packages.default.vendorHash -v "$(printf '"%s"' "$DUMMY_HASH")" -f -i
+NIX_EDITOR="$(devbox run which nix-editor)"
+"$NIX_EDITOR" "$FILE" outputs.packages.default.vendorHash -v "$(printf '"%s"' "$DUMMY_HASH")" -f -i
 
 # Parse the correct hash from the error output
 HASH=$(nix build 2>&1 | sed -n 's/.*got:\s*//p' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
@@ -18,4 +18,4 @@ if [ -z "$HASH" ]; then
   exit 1
 fi
 
-nix run github:snowfallorg/nix-editor -- "$FILE" outputs.packages.default.vendorHash -v "$(printf '"%s"' "$HASH")" -f -i
+"$NIX_EDITOR" "$FILE" outputs.packages.default.vendorHash -v "$(printf '"%s"' "$HASH")" -f -i
