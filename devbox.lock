@@ -1,0 +1,13 @@
+{
+  "lockfile_version": "1",
+  "packages": {
+    "github:NixOS/nixpkgs/nixpkgs-unstable": {
+      "last_modified": "2025-11-30T03:55:57Z",
+      "resolved": "github:NixOS/nixpkgs/890f57fde071de281cd0e950cd80ea3e1ab55e75?lastModified=1764474957"
+    },
+    "github:snowfallorg/nix-editor/0.3.0": {
+      "last_modified": "2023-02-03T14:52:07Z",
+      "resolved": "github:snowfallorg/nix-editor/ee45ac30a6e8bf1cbf40a5c1518eedd39a51fec1?lastModified=1675435927"
+    }
+  }
+}
