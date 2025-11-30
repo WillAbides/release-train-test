@@ -41,6 +41,8 @@ jobs:
 #        with:
 #          enable-cache: 'true'
       - name: delete me
+        env:
+          DEVBOX_DEBUG: '1'
         run: script/nix-editor -h
       - uses: tibdex/github-app-token@v1.8.0
         id: generate-token
