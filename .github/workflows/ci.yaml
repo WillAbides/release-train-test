@@ -32,6 +32,8 @@ jobs:
             ${{ steps.setup-go.outputs.GOMODCACHE }}
           key: go-${{ runner.os }}-${{ hashFiles('go.*', '*.go', '.github/workflows/ci.yaml', 'script/*', 'action/*' ,'.bindown.yaml', '.goreleaser.yaml') }}
           restore-keys: go-${{ runner.os }}-
+      - name: delete me
+        run: script/nix-editor -h
       - uses: tibdex/github-app-token@v1.8.0
         id: generate-token
         with:
