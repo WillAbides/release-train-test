@@ -32,6 +32,10 @@ script/generate runs all generators for this repo.
 
 script/lint runs linters on the project.
 
+### nix-editor
+
+script/nix-editor runs https://github.com/snowfallorg/nix-editor with the given arguments
+
 ### release-train
 
 script/release-train runs release-train at the same version as configured in the action.
