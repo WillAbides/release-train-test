@@ -7,7 +7,7 @@ set -e
 
 FILE="flake.nix"
 DUMMY_HASH="sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
-NIX_EDITOR="$(devbox run which nix-editor)"
+NIX_EDITOR="$(devbox run -q which nix-editor)"
 "$NIX_EDITOR" "$FILE" outputs.packages.default.vendorHash -v "$(printf '"%s"' "$DUMMY_HASH")" -f -i
 
 # Parse the correct hash from the error output
