@@ -41,6 +41,8 @@ jobs:
         with:
           nix_path: nixpkgs=channel:nixos-unstable
       - uses: jetify-com/devbox-install-action@v0.14.0
+        with:
+          enable-cache: 'true'
       - name: git config
         run: |
           git config --local user.name '${{ github.actor }}'
