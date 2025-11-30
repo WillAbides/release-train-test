@@ -20,7 +20,7 @@
       {
         packages.default = pkgs.buildGoModule {
           pname = "release-train-test";
-          version = "devel";
+          version = "v0.3.0";
           src = ./.;
           vendorHash = "sha256-uP/+QtXJiQGWL3mJKXGxAbz0C0FIJ90GM1b73odA2rY=";
           ldflags = [ "-X main.version=${self.packages.${system}.default.version}" ];
