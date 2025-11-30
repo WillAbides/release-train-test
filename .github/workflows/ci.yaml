@@ -34,7 +34,7 @@ jobs:
           restore-keys: go-${{ runner.os }}-
       - uses: jetify-com/devbox-install-action@v0.14.0
         with:
-          enable-cache: 'true'
+#          enable-cache: 'true'
       - name: delete me
         run: script/nix-editor -h
       - uses: tibdex/github-app-token@v1.8.0
