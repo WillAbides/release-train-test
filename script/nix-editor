@@ -5,6 +5,10 @@ set -e
 
 REPO_DIR="$(CDPATH="" cd -- "$(dirname -- "$0")/.." && pwd)"
 
-NIX_EDITOR="$(cd "$REPO_DIR" && devbox run -q which nix-editor)"
+NIX_EDITOR="$(
+  cd "$REPO_DIR" &&
+    script/bindown -q install devbox &&
+    bin/devbox run -q which nix-editor
+)"
 
 exec "$NIX_EDITOR" "$@"
