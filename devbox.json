@@ -1,4 +1,4 @@
 {
   "$schema":  "https://raw.githubusercontent.com/jetify-com/devbox/0.16.0/.schema/devbox.schema.json",
-  "packages": ["github:snowfallorg/nix-editor/0.3.0"]
+  "packages": ["github:snowfallorg/nix-editor"]
 }
